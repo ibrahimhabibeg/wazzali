@@ -1,4 +1,5 @@
-import {Server} from 'socket.io';
+import { Server } from "socket.io";
+import { generateUsername } from "./user";
 
 const io = new Server({});
 
@@ -22,10 +23,12 @@ io.on('connection', socket => {
   socket.on('createTeam', () => {
     if (typeof socket.data.teamId === 'string') return;
     const id = generateNewTeamId();
-    socket.data = {teamId: id};
+    const username = generateUsername({ users: [] });
+    socket.data = { teamId: id, username };
     socket.join(id);
     io.to(id).emit('data', {teamId: id});
     console.log(id);
+    console.log(username);
   });
 });
 
