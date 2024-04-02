@@ -25,6 +25,7 @@ const LightTheme = {
   colors: {
     ...MD3LightTheme.colors,
     ...AdaptedLightTheme.colors,
+    primary: "#F67357"
   },
 };
 const DarkTheme = {
@@ -33,6 +34,7 @@ const DarkTheme = {
   colors: {
     ...MD3DarkTheme.colors,
     ...AdaptedDarkTheme.colors,
+    primary: "#F67357"
   },
 };
 
@@ -43,11 +45,15 @@ export const ThemeContext = createContext({
 });
 
 export const ThemeProvider = ({ children }:{children: React.JSX.Element}) => {
-  const [isDark, setIsDark] = useState(false);
+  const [isDark, setIsDark] = useState(true);
 
   const setDefaultState = async () => {
     const cachedValue = await getItemAsync(IS_DARK_KEY);
-    setIsDark(cachedValue === "true");
+    if(!cachedValue) {
+      setIsDark(true);
+      await setItemAsync(IS_DARK_KEY, 'true')
+    }
+    else setIsDark(cachedValue === "true");
   };
 
   useEffect(() => {
