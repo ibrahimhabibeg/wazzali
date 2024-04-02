@@ -1,13 +1,10 @@
-import { View } from 'react-native';
 import { ThemeProvider } from "./src/Theme";
-import { Text } from "react-native-paper";
+import Navigator from "./src/Navigator";
 
 export default function App() {
   return (
-    <ThemeProvider>
-      <View>
-        <Text>Open up App.tsx to start working on your app!</Text>
-      </View>
-    </ThemeProvider>
+      <ThemeProvider>
+        <Navigator/>
+      </ThemeProvider>
   );
 }
