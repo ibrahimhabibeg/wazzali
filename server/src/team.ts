@@ -1,4 +1,4 @@
-import { doesContainTeamCode } from "./persistence";
+import {doesContainTeamCode} from './persistence';
 
 const generateNewTeamCode = () => {
   let code: string;
