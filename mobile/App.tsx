@@ -1,16 +1,13 @@
 import { ThemeProvider } from "./src/Theme";
 import Navigator from "./src/Navigator";
-import { SocketProvider } from "./src/SocketProvider";
-import StateManagement from "./src/StateManagement";
+import { SocketListener } from "./src/SocketListener";
 
 export default function App() {
   return (
       <ThemeProvider>
-        <SocketProvider>
-          <StateManagement>
+        <SocketListener>
             <Navigator/>
-          </StateManagement>
-        </SocketProvider>
+        </SocketListener>
       </ThemeProvider>
   );
 }

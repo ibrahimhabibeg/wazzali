@@ -4,6 +4,7 @@ import { Button, Divider, Text } from "react-native-paper";
 import CodeInput from "./CodeInput";
 import { useContext } from "react";
 import { ThemeContext } from "./Theme";
+import { createTeam, joinTeam } from "./actions";
 
 const JoinTeam = () => {
   const {theme} = useContext(ThemeContext);
@@ -18,11 +19,15 @@ const JoinTeam = () => {
         <Text variant={"titleMedium"}>Teamwork Made Easy</Text>
         <View style={{marginTop:30, display:"flex", alignItems:"center"}}>
           <Text variant={"labelLarge"}>Join a team with code</Text>
-          <CodeInput onSubmit={(code)=>console.log(code)}/>
+          <CodeInput onSubmit={joinTeam} />
         </View>
         <Divider style={{width:"80%", marginTop:30}}></Divider>
         <View>
-          <Button style={{marginTop:30}}><Text variant={"titleMedium"} style={{color:theme.colors.primary}}>Create New Team</Text></Button>
+          <Button style={{ marginTop: 30 }} onPress={createTeam}>
+            <Text variant={"titleMedium"} style={{ color: theme.colors.primary }}>
+              Create New Team
+            </Text>
+          </Button>
         </View>
       </ScrollView>
     </SafeAreaView>
