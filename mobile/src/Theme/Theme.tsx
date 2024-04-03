@@ -44,20 +44,31 @@ export const ThemeContext = createContext({
   isDark: true,
 });
 
-export const ThemeProvider = ({ children }:{children: React.JSX.Element}) => {
+export const ThemeProvider = ({
+  children,
+}: {
+  children: React.JSX.Element;
+}) => {
   const [isDark, setIsDark] = useState(true);
-  const myColor = useStore(state=>state.me?.color) || 'blue';
+  const myColor = useStore((state) => state.me?.color) || "blue";
 
-  const LightTheme = {...baseLightTheme, colors:{...baseLightTheme.colors, ...themeColorsMap.light[myColor]}}
-  const DarkTheme = {...baseLightTheme, colors:{...baseLightTheme.colors, ...themeColorsMap.dark[myColor]}}
+  const LightTheme = {
+    ...baseLightTheme,
+    colors: { ...baseLightTheme.colors, ...themeColorsMap.light[myColor] },
+  };
+  const DarkTheme = {
+    ...baseLightTheme,
+    colors: { ...baseLightTheme.colors, ...themeColorsMap.dark[myColor] },
+  };
 
   const setDefaultState = async () => {
     const cachedValue = await getItemAsync(IS_DARK_KEY);
-    if(!cachedValue) {
+    if (!cachedValue) {
       setIsDark(true);
-      await setItemAsync(IS_DARK_KEY, 'true')
+      await setItemAsync(IS_DARK_KEY, "true");
+    } else {
+      setIsDark(cachedValue === "true");
     }
-    else setIsDark(cachedValue === "true");
   };
 
   useEffect(() => {

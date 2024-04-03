@@ -1,18 +1,18 @@
-import { Text } from "react-native-paper";
-import { CodeField, Cursor, useBlurOnFulfill } from "react-native-confirmation-code-field";
-import { useContext, useState } from "react";
-import { ThemeContext } from "../Theme/Theme";
+import React, { useContext, useState } from 'react'
+import { Text } from 'react-native-paper'
+import { CodeField, Cursor, useBlurOnFulfill } from 'react-native-confirmation-code-field'
+import { ThemeContext } from '../Theme/Theme'
 
-const CELL_COUNT = 6;
+const CELL_COUNT = 6
 
-const CodeInput = ({onSubmit}:propsType) => {
-  const [value, setValue] = useState("");
-  const ref = useBlurOnFulfill({ value, cellCount: CELL_COUNT });
-  const { theme } = useContext(ThemeContext);
+const CodeInput = ({ onSubmit }: propsType): React.JSX.Element => {
+  const [value, setValue] = useState('')
+  const ref = useBlurOnFulfill({ value, cellCount: CELL_COUNT })
+  const { theme } = useContext(ThemeContext)
 
-  const onChangeText = (text:string)=>{
+  const onChangeText = (text: string): void => {
     setValue(text)
-    if(text.length===CELL_COUNT) onSubmit(text);
+    if (text.length === CELL_COUNT) onSubmit(text)
   }
 
   return (
@@ -34,20 +34,20 @@ const CodeInput = ({onSubmit}:propsType) => {
             borderWidth: 2,
             marginHorizontal: 4,
             borderColor: theme.colors.border,
-            textAlign: "center"
+            textAlign: 'center'
           }, isFocused && {
             borderColor: theme.colors.primary
           }]}
         >
-          {symbol || (isFocused ? <Cursor /> : null)}
+          {(Boolean(symbol)) || (isFocused ? <Cursor /> : null)}
         </Text>
       )}
     />
-  );
-};
-
-type propsType = {
-  onSubmit: (code:string)=>void
+  )
 }
 
-export default CodeInput;
+interface propsType {
+  onSubmit: (code: string) => void
+}
+
+export default CodeInput

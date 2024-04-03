@@ -1,1 +1,1 @@
-export const IS_DARK_KEY = "IS_DARK";
+export const IS_DARK_KEY = 'IS_DARK'
