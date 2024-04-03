@@ -4,7 +4,7 @@ import { useContext } from "react";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import JoinTeam from "./JoinTeam";
 import useStore from "./useStore";
-import { Text } from "react-native-paper";
+import Home from "./Home";
 
 const Stack = createNativeStackNavigator();
 
@@ -19,7 +19,7 @@ const Navigator = () => {
             <>
               <Stack.Screen
                 name="home"
-                component={()=>(<Text>Hello World!</Text>)}
+                component={Home}
               />
             </>
           ) : (
