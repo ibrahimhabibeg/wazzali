@@ -2,7 +2,7 @@ export type User = {
   username: string;
   description: string;
   isLeader: boolean;
-  color: 'blue' | 'red' | 'yellow' | 'green';
+  color: Color;
 };
 export type Role = unknown;
 export type Team = {
@@ -10,3 +10,4 @@ export type Team = {
   users: Array<User>;
   roles: Array<Role>;
 };
+export type Color = 'blue' | 'red' | 'yellow' | 'green';

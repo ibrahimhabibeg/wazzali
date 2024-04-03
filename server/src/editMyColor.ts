@@ -1,13 +1,14 @@
 import {Server, Socket} from 'socket.io';
 import {getTeam, storeTeam} from './persistence';
 import {DefaultEventsMap} from 'socket.io/dist/typed-events';
+import {Color} from './index';
 
 const editMyColor =
   (
     io: Server<DefaultEventsMap, DefaultEventsMap, DefaultEventsMap, any>,
     socket: Socket
   ) =>
-  (color: 'blue' | 'red' | 'green' | 'yellow') => {
+  (color: Color) => {
     const {teamCode} = socket.data;
     if (typeof teamCode !== 'string') return;
     const oldTeam = getTeam(teamCode);

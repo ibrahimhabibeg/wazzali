@@ -1,3 +1,5 @@
+import {Color} from './index';
+
 const adjectives = [
   'Caffeinated',
   'Sleepless',
@@ -37,12 +39,7 @@ const descriptions = [
   'Thesis in progress, dreams even bigger.',
 ];
 
-const colors: Array<'red' | 'blue' | 'green' | 'yellow'> = [
-  'red',
-  'blue',
-  'green',
-  'yellow',
-];
+const colors: Array<Color> = ['red', 'blue', 'green', 'yellow'];
 
 const randomAdjective = () =>
   adjectives[Math.floor(Math.random() * adjectives.length)];

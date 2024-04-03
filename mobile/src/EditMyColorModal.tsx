@@ -2,15 +2,16 @@ import { Modal, Portal } from "react-native-paper";
 import { Pressable, View } from "react-native";
 import UserIcon from "./UserIcon";
 import { editMyColor } from "./actions";
+import { Color } from "./types";
 
-const colors: Array<'blue'|'red'|'green'|'yellow'> = ['blue', 'red', 'green', 'yellow'];
+const colors: Array<Color> = ['blue', 'red', 'green', 'yellow'];
 
 const EditMyColor = ({visible, hide}:propsType) => {
-  const submitColor = (color:('blue'|'red'|'green'|'yellow')) => {
+  const submitColor = (color:Color) => {
     editMyColor(color);
     hide();
   }
-  
+
   return (
     <Portal>
       <Modal visible={visible} onDismiss={hide}>

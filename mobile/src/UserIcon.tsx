@@ -1,6 +1,7 @@
 import { Avatar } from "react-native-paper";
 import colorIconMap from "./colorIconMap";
 import type { StyleProp, ViewStyle } from "react-native";
+import { Color } from "./types";
 
 const UserIcon = ({color, size, style}:propsType) => {
   return(
@@ -9,7 +10,7 @@ const UserIcon = ({color, size, style}:propsType) => {
 }
 
 type propsType = {
-  color: 'blue' | 'red' | 'green' | 'yellow';
+  color: Color;
   size?: number;
   style?: StyleProp<ViewStyle>
 }
