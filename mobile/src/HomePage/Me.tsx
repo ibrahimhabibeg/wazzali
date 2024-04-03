@@ -1,10 +1,10 @@
 import { Pressable, View } from "react-native";
 import { Icon, Text } from "react-native-paper";
 import { useContext, useState } from "react";
-import { ThemeContext } from "./Theme";
-import useStore from "./useStore";
+import { ThemeContext } from "../Theme/Theme";
+import useStore from "../Store/useStore";
 import EditMyDataModal from "./EditMyDataModal";
-import UserIcon from "./UserIcon";
+import UserIcon from "../Components/UserIcon";
 import EditMyColorModal from "./EditMyColorModal";
 
 const Me = () => {

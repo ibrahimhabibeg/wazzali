@@ -3,15 +3,15 @@ import { Image, ScrollView, View } from "react-native";
 import { Button, Divider, Text } from "react-native-paper";
 import CodeInput from "./CodeInput";
 import { useContext } from "react";
-import { ThemeContext } from "./Theme";
-import { createTeam, joinTeam } from "./actions";
+import { ThemeContext } from "../Theme/Theme";
+import { createTeam, joinTeam } from "../Actions/actions";
 
 const JoinTeam = () => {
   const {theme} = useContext(ThemeContext);
   return(
     <SafeAreaView>
       <ScrollView contentContainerStyle={{display:"flex", flexDirection:"column", alignItems:"center"}}>
-        <Image source={require('../assets/logo.png')} style={{flex: 1,
+        <Image source={require('../../assets/logo.png')} style={{flex: 1,
           width:120, height:120,
           marginTop: 50
           }}/>

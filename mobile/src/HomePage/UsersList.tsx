@@ -1,9 +1,9 @@
 import { FlatList, View } from "react-native";
 import { Avatar, Card, Text } from "react-native-paper";
 import { useContext } from "react";
-import { ThemeContext } from "./Theme";
-import useStore from "./useStore";
-import UserIcon from "./UserIcon";
+import { ThemeContext } from "../Theme/Theme";
+import useStore from "../Store/useStore";
+import UserIcon from "../Components/UserIcon";
 
 const UsersList = () => {
   const {theme} = useContext(ThemeContext);

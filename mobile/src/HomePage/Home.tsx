@@ -1,4 +1,4 @@
-import useStore from "./useStore";
+import useStore from "../Store/useStore";
 import { Text } from "react-native-paper";
 import { SafeAreaView } from "react-native-safe-area-context";
 import UsersList from "./UsersList";

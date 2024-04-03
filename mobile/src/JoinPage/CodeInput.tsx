@@ -1,7 +1,7 @@
 import { Text } from "react-native-paper";
 import { CodeField, Cursor, useBlurOnFulfill } from "react-native-confirmation-code-field";
 import { useContext, useState } from "react";
-import { ThemeContext } from "./Theme";
+import { ThemeContext } from "../Theme/Theme";
 
 const CELL_COUNT = 6;
 

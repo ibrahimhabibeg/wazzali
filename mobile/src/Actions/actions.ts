@@ -1,5 +1,5 @@
-import socket from "./socket";
-import { Color } from "./types";
+import socket from "../Socket/socket";
+import { Color } from "../types";
 
 export const joinTeam = (code:string) => socket.emit('joinTeam', code);
 

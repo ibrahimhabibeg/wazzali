@@ -2,8 +2,8 @@ import type { JSX } from "react";
 import { createContext, useEffect } from "react";
 import { io } from "socket.io-client";
 import socket from "./socket";
-import { Team, User } from "./types";
-import useStore from "./useStore";
+import { Team, User } from "../types";
+import useStore from "../Store/useStore";
 
 export const SocketContext = createContext({
   socket: io()

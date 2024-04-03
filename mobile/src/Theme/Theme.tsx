@@ -10,9 +10,9 @@ import {
 } from "@react-navigation/native";
 import { createContext, useEffect, useState } from "react";
 import { setItemAsync, getItemAsync } from "expo-secure-store";
-import { IS_DARK_KEY } from "./config/secureStore";
+import { IS_DARK_KEY } from "../config/secureStore";
 import React from "react";
-import useStore from "./useStore";
+import useStore from "../Store/useStore";
 import themeColorsMap from "./themeColorsMap";
 
 const { LightTheme: AdaptedLightTheme, DarkTheme: AdaptedDarkTheme } =

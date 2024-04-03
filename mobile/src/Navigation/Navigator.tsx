@@ -1,10 +1,10 @@
 import { NavigationContainer } from "@react-navigation/native";
-import { ThemeContext } from "./Theme";
+import { ThemeContext } from "../Theme/Theme";
 import { useContext } from "react";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import JoinTeam from "./JoinTeam";
-import useStore from "./useStore";
-import Home from "./Home";
+import JoinTeam from "../JoinPage/JoinTeam";
+import useStore from "../Store/useStore";
+import Home from "../HomePage/Home";
 
 const Stack = createNativeStackNavigator();
 

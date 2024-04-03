@@ -1,9 +1,9 @@
-import useStore from "./useStore";
+import useStore from "../Store/useStore";
 import { useContext, useEffect, useState } from "react";
 import { Button, Modal, Portal, Text, TextInput } from "react-native-paper";
 import { View } from "react-native";
-import { ThemeContext } from "./Theme";
-import { editMyData } from "./actions";
+import { ThemeContext } from "../Theme/Theme";
+import { editMyData } from "../Actions/actions";
 
 const EditMyDataModal = ({ visible, hide }: propsType) => {
   const me = useStore(state => state.me);

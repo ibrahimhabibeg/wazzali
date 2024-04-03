@@ -1,8 +1,8 @@
 import { Modal, Portal } from "react-native-paper";
 import { Pressable, View } from "react-native";
-import UserIcon from "./UserIcon";
-import { editMyColor } from "./actions";
-import { Color } from "./types";
+import UserIcon from "../Components/UserIcon";
+import { editMyColor } from "../Actions/actions";
+import { Color } from "../types";
 
 const colors: Array<Color> = ['blue', 'red', 'green', 'yellow'];
 

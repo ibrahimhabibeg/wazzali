@@ -1,6 +1,6 @@
-import { ThemeProvider } from "./src/Theme";
-import Navigator from "./src/Navigator";
-import { SocketListener } from "./src/SocketListener";
+import { ThemeProvider } from "./src/Theme/Theme";
+import Navigator from "./src/Navigation/Navigator";
+import { SocketListener } from "./src/Socket/SocketListener";
 
 export default function App() {
   return (
