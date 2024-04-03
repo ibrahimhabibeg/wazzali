@@ -18,7 +18,7 @@ const joinTeam =
     socket.join(team.code);
     io.to(team.code).emit('data', newTeam);
     socket.emit('me', user);
-    storeTeam(team);
+    storeTeam(newTeam);
   };
 
 export default joinTeam;
