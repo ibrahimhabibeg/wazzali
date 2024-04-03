@@ -37,6 +37,13 @@ const descriptions = [
   'Thesis in progress, dreams even bigger.',
 ];
 
+const colors: Array<'red' | 'blue' | 'green' | 'yellow'> = [
+  'red',
+  'blue',
+  'green',
+  'yellow',
+];
+
 const randomAdjective = () =>
   adjectives[Math.floor(Math.random() * adjectives.length)];
 
@@ -57,9 +64,12 @@ const generateUsername = (team: Team) => {
 const generateDescription = () =>
   descriptions[Math.floor(Math.random() * descriptions.length)];
 
+const generateColor = () => colors[Math.floor(Math.random() * colors.length)];
+
 const generateUser = (team: Team) => ({
   username: generateUsername(team),
   description: generateDescription(),
+  color: generateColor(),
 });
 
 type Team = {
