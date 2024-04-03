@@ -1,5 +1,5 @@
 import { create } from "zustand";
-import { Team, User } from "./types";
+import { Team, User } from "../types";
 
 type storeSchema = {
   team: Team | null,
