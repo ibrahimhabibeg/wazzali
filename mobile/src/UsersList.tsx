@@ -3,6 +3,7 @@ import { Avatar, Card, Text } from "react-native-paper";
 import { useContext } from "react";
 import { ThemeContext } from "./Theme";
 import useStore from "./useStore";
+import UserIcon from "./UserIcon";
 
 const UsersList = () => {
   const {theme} = useContext(ThemeContext);
@@ -20,7 +21,7 @@ const UsersList = () => {
           <Card style={{height:150, marginRight: 10, width:300}}>
             <Card.Content>
               <View style={{flexDirection:"row", height:"50%", alignItems:"center"}}>
-                <Avatar.Icon icon={"book"} size={30}/>
+                <UserIcon color={item.item.color} size={30}/>
                 <Text variant={"titleMedium"} style={{marginLeft:10}} ellipsizeMode={"tail"} numberOfLines={1}>
                   {item.item.username}
                 </Text>
