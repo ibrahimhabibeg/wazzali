@@ -6,6 +6,7 @@ import editMyColor from './editMyColor';
 import {Redis} from 'ioredis';
 import {createAdapter} from '@socket.io/redis-adapter';
 import addRole from './addRole';
+import editRole from './editRole';
 
 const pubClient = new Redis({
   host: process.env.REDIS_HOST,
@@ -21,6 +22,7 @@ io.on('connection', socket => {
   socket.on('editMyData', editMyData(io, socket));
   socket.on('editMyColor', editMyColor(io, socket));
   socket.on('addRole', addRole(io, socket));
+  socket.on('editRole', editRole(io, socket));
 });
 
 io.listen(Number(process.env.PORT));
