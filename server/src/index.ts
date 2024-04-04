@@ -3,8 +3,13 @@ import createTeam from './createTeam';
 import joinTeam from './joinTeam';
 import editMyData from './editMyData';
 import editMyColor from './editMyColor';
+import {Redis} from 'ioredis';
+import {createAdapter} from '@socket.io/redis-adapter';
 
-const io = new Server({});
+const pubClient = new Redis({host: 'redis', port: 6379});
+const subClient = pubClient.duplicate();
+
+const io = new Server({adapter: createAdapter(pubClient, subClient)});
 
 io.on('connection', socket => {
   socket.on('createTeam', createTeam(io, socket));
