@@ -6,7 +6,10 @@ import editMyColor from './editMyColor';
 import {Redis} from 'ioredis';
 import {createAdapter} from '@socket.io/redis-adapter';
 
-const pubClient = new Redis({host: 'redis', port: 6379});
+const pubClient = new Redis({
+  host: process.env.REDIS_HOST,
+  port: Number(process.env.REDIS_PORT),
+});
 const subClient = pubClient.duplicate();
 
 const io = new Server({adapter: createAdapter(pubClient, subClient)});
