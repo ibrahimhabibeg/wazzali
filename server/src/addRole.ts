@@ -1,26 +1,10 @@
-import {Server, Socket} from 'socket.io';
 import {Role} from '.';
-import {getTeam, storeTeam} from './persistence';
-import {DefaultEventsMap} from 'socket.io/dist/typed-events';
+import {updateTeam} from './utils';
 
-const addRole =
-  (
-    io: Server<DefaultEventsMap, DefaultEventsMap, DefaultEventsMap, any>,
-    socket: Socket
-  ) =>
-  async (role: Role) => {
-    const {teamCode} = socket.data;
-    if (typeof teamCode !== 'string') return;
-    const team = await getTeam(teamCode);
-    if (!team) return;
-    const user = team.users.find(
-      user => user.username === socket.data.username
-    );
-    if (!user?.isLeader) return;
-    if (team.roles.some(val => val.title === role.title)) return;
-    const newTeam = {...team, roles: [...team.roles, role]};
-    storeTeam(newTeam);
-    io.to(teamCode).emit('data', newTeam);
-  };
+const addRole = updateTeam<Role>((team, user, role) => {
+  if (!user?.isLeader) return;
+  if (team.roles.some(val => val.title === role.title)) return;
+  return {...team, roles: [...team.roles, role]};
+});
 
 export default addRole;
