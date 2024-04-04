@@ -9,16 +9,28 @@ export const SocketContext = createContext({
   socket: io()
 })
 
-export const SocketListener = ({ children }: { children: JSX.Element }): React.JSX.Element => {
+export const SocketListener = ({
+  children
+}: {
+  children: JSX.Element
+}): React.JSX.Element => {
   const setTeam = useStore((state) => state.setTeam)
   const setMe = useStore((state) => state.setMe)
 
   useEffect(() => {
-    socket.on('data', (team: Team) => { setTeam(team) })
-    socket.on('me', (me: User) => { setMe(me) })
+    socket.on('data', (team: Team) => {
+      setTeam(team)
+    })
+    socket.on('me', (me: User) => {
+      setMe(me)
+    })
     return () => {
-      socket.off('data', (team: Team) => { setTeam(team) })
-      socket.off('me', (me: User) => { setMe(me) })
+      socket.off('data', (team: Team) => {
+        setTeam(team)
+      })
+      socket.off('me', (me: User) => {
+        setMe(me)
+      })
     }
   }, [setMe, setTeam])
 

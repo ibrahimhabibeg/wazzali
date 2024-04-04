@@ -1,6 +1,10 @@
 import React, { useContext, useState } from 'react'
 import { Text } from 'react-native-paper'
-import { CodeField, Cursor, useBlurOnFulfill } from 'react-native-confirmation-code-field'
+import {
+  CodeField,
+  Cursor,
+  useBlurOnFulfill
+} from 'react-native-confirmation-code-field'
 import { ThemeContext } from '../Theme/Theme'
 
 const CELL_COUNT = 6
@@ -26,20 +30,23 @@ const CodeInput = ({ onSubmit }: propsType): React.JSX.Element => {
       renderCell={({ index, symbol, isFocused }) => (
         <Text
           key={index}
-          style={[{
-            width: 40,
-            height: 40,
-            lineHeight: 38,
-            fontSize: 24,
-            borderWidth: 2,
-            marginHorizontal: 4,
-            borderColor: theme.colors.border,
-            textAlign: 'center'
-          }, isFocused && {
-            borderColor: theme.colors.primary
-          }]}
+          style={[
+            {
+              width: 40,
+              height: 40,
+              lineHeight: 38,
+              fontSize: 24,
+              borderWidth: 2,
+              marginHorizontal: 4,
+              borderColor: theme.colors.border,
+              textAlign: 'center'
+            },
+            isFocused && {
+              borderColor: theme.colors.primary
+            }
+          ]}
         >
-          {symbol !== '' ? symbol : (isFocused ? <Cursor /> : null)}
+          {symbol !== '' ? symbol : isFocused ? <Cursor /> : null}
         </Text>
       )}
     />

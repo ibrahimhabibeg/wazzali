@@ -14,7 +14,7 @@ const Navigator = (): React.JSX.Element => {
   return (
     <NavigationContainer theme={theme}>
       <Stack.Navigator screenOptions={{ headerShown: false }}>
-        {(team != null)
+        {team != null
           ? (
           <>
             <Stack.Screen name="home" component={Home} />

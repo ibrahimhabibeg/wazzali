@@ -6,7 +6,7 @@ import { type Color } from '../types'
 
 const UserIcon = ({ color, size, style }: propsType): React.JSX.Element => {
   return (
-    <Avatar.Image source={colorIconMap[color]} size={size} style={style}/>
+    <Avatar.Image source={colorIconMap[color]} size={size} style={style} />
   )
 }
 

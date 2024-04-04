@@ -7,8 +7,8 @@ import ShareTeam from './ShareTeam'
 const Home = (): React.JSX.Element => {
   return (
     <SafeAreaView style={{ display: 'flex', alignItems: 'center' }}>
-      <Me/>
-      <UsersList/>
+      <Me />
+      <UsersList />
       <ShareTeam />
     </SafeAreaView>
   )

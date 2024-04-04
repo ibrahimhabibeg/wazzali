@@ -16,14 +16,25 @@ const EditMyColor = ({ visible, hide }: propsType): React.JSX.Element => {
   return (
     <Portal>
       <Modal visible={visible} onDismiss={hide}>
-        <View style={{ width: '85%', flexDirection: 'row', justifyContent: 'space-around', alignSelf: 'center', flexWrap: 'wrap' }}>
-          {
-            colors.map(color => (
-              <Pressable onPress={() => { submitColor(color) }} key={color} >
-                <UserIcon color={color} size={50}/>
-              </Pressable>
-            ))
-          }
+        <View
+          style={{
+            width: '85%',
+            flexDirection: 'row',
+            justifyContent: 'space-around',
+            alignSelf: 'center',
+            flexWrap: 'wrap'
+          }}
+        >
+          {colors.map((color) => (
+            <Pressable
+              onPress={() => {
+                submitColor(color)
+              }}
+              key={color}
+            >
+              <UserIcon color={color} size={50} />
+            </Pressable>
+          ))}
         </View>
       </Modal>
     </Portal>
