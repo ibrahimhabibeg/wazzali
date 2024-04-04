@@ -18,6 +18,7 @@ const addRole =
       user => user.username === socket.data.username
     );
     if (!user?.isLeader) return;
+    if (team.roles.some(val => val.title === role.title)) return;
     const newTeam = {...team, roles: [...team.roles, role]};
     storeTeam(newTeam);
     io.to(teamCode).emit('data', newTeam);
