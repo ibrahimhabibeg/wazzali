@@ -1,0 +1,16 @@
+services:
+  server:
+    container_name: wazzali-server
+    build:
+      context: ./
+      target: final
+    ports:
+      - 8080:8080
+    environment:
+      - PORT=8080
+  redis:
+    container_name: wazzali-redis
+    image: redis:latest
+    restart: always
+    ports:
+      - 6379:6379
