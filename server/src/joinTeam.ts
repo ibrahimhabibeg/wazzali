@@ -8,9 +8,9 @@ const joinTeam =
     io: Server<DefaultEventsMap, DefaultEventsMap, DefaultEventsMap, any>,
     socket: Socket
   ) =>
-  (code: string) => {
+  async (code: string) => {
     if (typeof socket.data.teamCode === 'string') return;
-    const team = getTeam(code);
+    const team = await getTeam(code);
     if (!team) return;
     const user = {...generateUser(team), isLeader: false};
     const newTeam = {...team, users: [...team.users, user]};

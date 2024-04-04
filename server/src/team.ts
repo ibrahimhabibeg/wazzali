@@ -1,10 +1,12 @@
 import {doesContainTeamCode} from './persistence';
 
-const generateNewTeamCode = () => {
+const generateNewTeamCode = async () => {
   let code: string;
+  let containTeamCode: boolean;
   do {
     code = Math.random().toString().slice(2, 8);
-  } while (doesContainTeamCode(code));
+    containTeamCode = await doesContainTeamCode(code);
+  } while (containTeamCode);
   return code;
 };
 
