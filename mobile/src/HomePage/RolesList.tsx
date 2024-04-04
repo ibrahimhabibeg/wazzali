@@ -1,12 +1,15 @@
-import { FlatList, View } from 'react-native'
-import { Avatar, Card, Text } from 'react-native-paper'
-import React, { useContext } from 'react'
+import { FlatList, Pressable, View } from 'react-native'
+import { Avatar, Card, Icon, Text } from 'react-native-paper'
+import React, { useContext, useState } from 'react'
 import { ThemeContext } from '../Theme/Theme'
 import useStore from '../Store/useStore'
+import AddRoleModal from './AddRoleModal'
 
 const RolesList = (): React.JSX.Element => {
   const { theme } = useContext(ThemeContext)
   const roles = useStore((state) => state.team?.roles)
+  const me = useStore((state) => state.me)
+  const [isAddingRole, setIsAddingRole] = useState(false)
   return (
     <View style={{ width: '85%', marginTop: 20 }}>
       <View
@@ -17,12 +20,26 @@ const RolesList = (): React.JSX.Element => {
           flexDirection: 'row',
           alignItems: 'center',
           paddingVertical: 5,
-          paddingHorizontal: 10
+          paddingHorizontal: 10,
+          justifyContent: 'space-between'
         }}
       >
         <Text style={{ color: theme.colors.onPrimary }} variant={'titleLarge'}>
           Roles ({roles?.length})
         </Text>
+        {((me?.isLeader) ?? false) && (
+          <Pressable
+            onPress={() => {
+              setIsAddingRole(true)
+            }}
+          >
+            <Icon
+              source={'plus-thick'}
+              size={26}
+              color={theme.colors.onPrimary}
+            />
+          </Pressable>
+        )}
       </View>
       <FlatList
         style={{ marginTop: 10 }}
@@ -38,7 +55,7 @@ const RolesList = (): React.JSX.Element => {
                   alignItems: 'center'
                 }}
               >
-                <Avatar.Icon size={30} icon={'book'}/>
+                <Avatar.Icon size={30} icon={'book'} />
                 <Text
                   variant={'titleMedium'}
                   style={{ marginLeft: 10 }}
@@ -56,6 +73,12 @@ const RolesList = (): React.JSX.Element => {
             </Card.Content>
           </Card>
         )}
+      />
+      <AddRoleModal
+        visible={isAddingRole}
+        hide={() => {
+          setIsAddingRole(false)
+        }}
       />
     </View>
   )
