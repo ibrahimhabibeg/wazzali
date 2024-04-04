@@ -5,8 +5,16 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import JoinTeam from '../JoinPage/JoinTeam'
 import useStore from '../Store/useStore'
 import Home from '../HomePage/Home'
+import Role from '../RolePage/Role'
 
-const Stack = createNativeStackNavigator()
+// eslint-disable-next-line @typescript-eslint/consistent-type-definitions
+export type NavigationParamList = {
+  home: undefined
+  join: undefined
+  role: { title: string }
+}
+
+const Stack = createNativeStackNavigator<NavigationParamList>()
 
 const Navigator = (): React.JSX.Element => {
   const { theme } = useContext(ThemeContext)
@@ -18,6 +26,7 @@ const Navigator = (): React.JSX.Element => {
           ? (
           <>
             <Stack.Screen name="home" component={Home} />
+            <Stack.Screen name="role" component={Role} />
           </>
             )
           : (
