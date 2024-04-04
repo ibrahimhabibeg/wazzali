@@ -10,9 +10,9 @@ const createTeam =
     io: Server<DefaultEventsMap, DefaultEventsMap, DefaultEventsMap, any>,
     socket: Socket
   ) =>
-  () => {
+  async () => {
     if (typeof socket.data?.teamCode === 'string') return;
-    const teamCode = generateNewTeamCode();
+    const teamCode = await generateNewTeamCode();
     const user = {...generateUser({users: []}), isLeader: true};
     const team: Team = {code: teamCode, users: [user], roles: []};
     socket.data = {teamCode: teamCode, username: user.username};
