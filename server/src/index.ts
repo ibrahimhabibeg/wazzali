@@ -5,6 +5,7 @@ import editMyData from './editMyData';
 import editMyColor from './editMyColor';
 import {Redis} from 'ioredis';
 import {createAdapter} from '@socket.io/redis-adapter';
+import addRole from './addRole';
 
 const pubClient = new Redis({
   host: process.env.REDIS_HOST,
@@ -19,6 +20,7 @@ io.on('connection', socket => {
   socket.on('joinTeam', joinTeam(io, socket));
   socket.on('editMyData', editMyData(io, socket));
   socket.on('editMyColor', editMyColor(io, socket));
+  socket.on('addRole', addRole(io, socket));
 });
 
 io.listen(Number(process.env.PORT));
@@ -29,7 +31,10 @@ export type User = {
   isLeader: boolean;
   color: Color;
 };
-export type Role = unknown;
+export type Role = {
+  title: string;
+  description: string;
+};
 export type Team = {
   code: string;
   users: Array<User>;
