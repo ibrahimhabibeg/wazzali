@@ -4,7 +4,10 @@ export interface User {
   isLeader: boolean
   color: Color
 }
-export type Role = unknown
+export interface Role {
+  title: string
+  description: string
+}
 export interface Team {
   code: string
   users: User[]
