@@ -23,3 +23,7 @@ export const editMyColor = (color: Color): void => {
 export const addRole = (role: Role): void => {
   socket.emit('addRole', role)
 }
+
+export const editRole = (data: { title: string, role: { title: string, description: string } }): void => {
+  socket.emit('editRole', data)
+}
