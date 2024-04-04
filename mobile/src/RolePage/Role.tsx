@@ -6,6 +6,7 @@ import { type NativeStackScreenProps } from '@react-navigation/native-stack'
 import { type NavigationParamList } from '../Navigation/Navigator'
 import { Pressable } from 'react-native'
 import EditRoleModal from './EditRoleModal'
+import DeleteRoleButton from './DeleteRoleButton'
 
 const Role = ({
   route: {
@@ -50,6 +51,7 @@ const Role = ({
         }}
         title={title}
       />
+      {isLeader === true && <DeleteRoleButton title={title} />}
     </SafeAreaView>
   )
 }
