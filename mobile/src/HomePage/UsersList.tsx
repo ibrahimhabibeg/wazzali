@@ -18,8 +18,8 @@ const UsersList = (): React.JSX.Element => {
         horizontal={true}
         data={users}
         renderItem={item => (
-          <Card style={{ height: 150, marginRight: 10, width: 300 }}>
-            <Card.Content>
+          <Card style={{ height: 150, marginRight: 10, width: 310 }}>
+            <Card.Content style={{ width: '90%' }}>
               <View style={{ flexDirection: 'row', height: '50%', alignItems: 'center' }}>
                 <UserIcon color={item.item.color} size={30}/>
                 <Text variant={'titleMedium'} style={{ marginLeft: 10 }} ellipsizeMode={'tail'} numberOfLines={1}>

@@ -39,7 +39,7 @@ const CodeInput = ({ onSubmit }: propsType): React.JSX.Element => {
             borderColor: theme.colors.primary
           }]}
         >
-          {(Boolean(symbol)) || (isFocused ? <Cursor /> : null)}
+          {symbol !== '' ? symbol : (isFocused ? <Cursor /> : null)}
         </Text>
       )}
     />
