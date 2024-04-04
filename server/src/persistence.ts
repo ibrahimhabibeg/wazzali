@@ -13,15 +13,11 @@ export const doesContainTeamCode = async (code: string) => {
 };
 
 export const storeTeam = async (newTeam: Team) => {
-  console.log('Store');
-  console.log(newTeam);
   await client.set(`team:${newTeam.code}`, JSON.stringify(newTeam));
 };
 
 export const getTeam = async (code: string) => {
   const teamString = await client.get(`team:${code}`);
   const team: Team = JSON.parse(String(teamString));
-  console.log('Get ' + code);
-  console.log(team);
   return team;
 };

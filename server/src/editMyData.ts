@@ -32,7 +32,6 @@ const editMyData =
       ...oldTeam.users.filter(user => user.username !== oldUser.username),
       newUser,
     ];
-    console.log(newUsers);
     const newTeam = {
       ...oldTeam,
       users: newUsers,

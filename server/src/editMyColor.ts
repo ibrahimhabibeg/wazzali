@@ -12,7 +12,6 @@ const editMyColor =
     const {teamCode} = socket.data;
     if (typeof teamCode !== 'string') return;
     const oldTeam = await getTeam(teamCode);
-    console.log(oldTeam);
     if (!oldTeam) return;
     const oldUser = oldTeam.users.find(
       user => user.username === socket.data.username
@@ -24,7 +23,6 @@ const editMyColor =
       newUser,
     ];
     const newTeam = {...oldTeam, users: newUsers};
-    console.log(newTeam);
     storeTeam(newTeam);
     io.to(teamCode).emit('data', newTeam);
     socket.emit('me', newUser);
