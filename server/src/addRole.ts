@@ -9,7 +9,6 @@ const addRole =
     socket: Socket
   ) =>
   async (role: Role) => {
-    console.log(role);
     const {teamCode} = socket.data;
     if (typeof teamCode !== 'string') return;
     const team = await getTeam(teamCode);
