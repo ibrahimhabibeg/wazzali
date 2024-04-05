@@ -37,6 +37,7 @@ export type User = {
   color: Color;
 };
 export type Role = {
+  id: string;
   title: string;
   description: string;
 };

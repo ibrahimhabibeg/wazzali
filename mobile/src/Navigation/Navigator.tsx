@@ -11,7 +11,7 @@ import Role from '../RolePage/Role'
 export type NavigationParamList = {
   home: undefined
   join: undefined
-  role: { title: string }
+  role: { id: string }
 }
 
 const Stack = createNativeStackNavigator<NavigationParamList>()

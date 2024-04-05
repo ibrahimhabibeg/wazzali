@@ -51,7 +51,7 @@ const RolesList = (): React.JSX.Element => {
         renderItem={(item) => (
           <Pressable
             onPress={() => {
-              navigation.navigate('role', { title: item.item.title })
+              navigation.navigate('role', { id: item.item.id })
             }}
           >
             <Card style={{ height: 150, marginRight: 10, width: 310 }}>

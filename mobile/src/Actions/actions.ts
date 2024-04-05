@@ -25,12 +25,12 @@ export const addRole = (role: Role): void => {
 }
 
 export const editRole = (data: {
-  title: string
+  id: string
   role: { title: string, description: string }
 }): void => {
   socket.emit('editRole', data)
 }
 
-export const deleteRole = (title: string): void => {
-  socket.emit('deleteRole', title)
+export const deleteRole = (id: string): void => {
+  socket.emit('deleteRole', id)
 }

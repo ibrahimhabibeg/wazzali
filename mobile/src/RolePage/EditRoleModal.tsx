@@ -11,23 +11,20 @@ import {
 import { View } from 'react-native'
 import { ThemeContext } from '../Theme/Theme'
 import { editRole } from '../Actions/actions'
-import { type NavigationProp, useNavigation } from '@react-navigation/native'
-import { type NavigationParamList } from '../Navigation/Navigator'
 
 const EditRoleModal = ({
   visible,
   hide,
-  title: oldTitle
+  id
 }: propsType): React.JSX.Element => {
   const role = useStore((state) =>
-    state.team?.roles.find((val) => val.title === oldTitle)
+    state.team?.roles.find((val) => val.id === id)
   )
   const roles = useStore((state) => state.team?.roles)
   const [title, setTitle] = useState('')
   const [titleError, setTitleError] = useState('')
   const [description, setDescription] = useState('')
   const [descriptionError] = useState('')
-  const navigation = useNavigation<NavigationProp<NavigationParamList>>()
 
   useEffect(() => {
     if (role == null) return
@@ -109,8 +106,7 @@ const EditRoleModal = ({
               style={{ marginRight: 10 }}
               disabled={Boolean(titleError) || Boolean(descriptionError)}
               onPress={() => {
-                editRole({ title: oldTitle, role: { title, description } })
-                navigation.setParams({ title })
+                editRole({ id, role: { title, description } })
                 hide()
               }}
             >
@@ -126,7 +122,7 @@ const EditRoleModal = ({
 interface propsType {
   visible: boolean
   hide: () => void
-  title: string
+  id: string
 }
 
 export default EditRoleModal

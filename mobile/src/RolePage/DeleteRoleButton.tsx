@@ -5,8 +5,12 @@ import { type NavigationProp, useNavigation } from '@react-navigation/native'
 import { type NavigationParamList } from '../Navigation/Navigator'
 import { ThemeContext } from '../Theme/Theme'
 import { View } from 'react-native'
+import useStore from '../Store/useStore'
 
-const DeleteRoleButton = ({ title }: PropsType): React.JSX.Element => {
+const DeleteRoleButton = ({ id }: PropsType): React.JSX.Element => {
+  const role = useStore((state) =>
+    state.team?.roles.find((val) => val.id === id)
+  )
   const navigation = useNavigation<NavigationProp<NavigationParamList>>()
   const [isVisibleModal, setIsVisibleModal] = useState(false)
   const { theme } = useContext(ThemeContext)
@@ -40,11 +44,28 @@ const DeleteRoleButton = ({ title }: PropsType): React.JSX.Element => {
               alignItems: 'center'
             }}
           >
-            <Text variant={'titleLarge'} style={{ marginTop: 20, width: '90%', alignSelf: 'center', textAlign: 'center' }}>
-              Are you sure you want to delete the role {title}?
+            <Text
+              variant={'titleLarge'}
+              style={{
+                marginTop: 20,
+                width: '90%',
+                alignSelf: 'center',
+                textAlign: 'center'
+              }}
+            >
+              Are you sure you want to delete the role {role?.title}?
             </Text>
-            <Text variant={'bodyMedium'} style={{ marginTop: 30, marginBottom: 30, width: '90%', alignSelf: 'center', textAlign: 'center' }}>
-                This action can&#39;t be reversed
+            <Text
+              variant={'bodyMedium'}
+              style={{
+                marginTop: 30,
+                marginBottom: 30,
+                width: '90%',
+                alignSelf: 'center',
+                textAlign: 'center'
+              }}
+            >
+              This action can&#39;t be reversed
             </Text>
             <View
               style={{
@@ -56,14 +77,18 @@ const DeleteRoleButton = ({ title }: PropsType): React.JSX.Element => {
                 marginRight: 10
               }}
             >
-              <Button style={{ marginLeft: 35 }} onPress={hideModal} textColor={theme.colors.onSurface}>
+              <Button
+                style={{ marginLeft: 35 }}
+                onPress={hideModal}
+                textColor={theme.colors.onSurface}
+              >
                 Cancel
               </Button>
               <Button
                 mode={'contained'}
                 style={{ marginRight: 10 }}
                 onPress={() => {
-                  deleteRole(title)
+                  deleteRole(id)
                   navigation.navigate('home')
                   hideModal()
                 }}
@@ -81,7 +106,7 @@ const DeleteRoleButton = ({ title }: PropsType): React.JSX.Element => {
 }
 
 interface PropsType {
-  title: string
+  id: string
 }
 
 export default DeleteRoleButton

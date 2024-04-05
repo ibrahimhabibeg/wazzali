@@ -10,11 +10,11 @@ import DeleteRoleButton from './DeleteRoleButton'
 
 const Role = ({
   route: {
-    params: { title }
+    params: { id }
   }
 }: PropsType): React.JSX.Element => {
   const role = useStore((state) =>
-    state.team?.roles.find((val) => val.title === title)
+    state.team?.roles.find((val) => val.id === id)
   )
   const isLeader = useStore((state) => state.me?.isLeader)
   const [isEditingData, setIsEditingData] = useState(false)
@@ -49,9 +49,9 @@ const Role = ({
         hide={() => {
           setIsEditingData(false)
         }}
-        title={title}
+        id={id}
       />
-      {isLeader === true && <DeleteRoleButton title={title} />}
+      {isLeader === true && <DeleteRoleButton id={id} />}
     </SafeAreaView>
   )
 }
