@@ -1,7 +1,7 @@
 import React, { useContext } from 'react'
 import { View } from 'react-native'
 import useStore from '../Store/useStore'
-import UserRating from '../Components/UserRating'
+import UserRating from './UserRating'
 import { Icon, Text } from 'react-native-paper'
 import { ThemeContext } from '../Theme/Theme'
 
@@ -19,12 +19,18 @@ const UsersRating = ({ roleId }: PropsType): React.JSX.Element => {
           alignItems: 'center',
           paddingVertical: 5,
           paddingHorizontal: 10,
-          marginBottom: 15,
           marginTop: 15
         }}
       >
-        <Icon size={25} source={'account-heart'} color={theme.colors.onPrimary} />
-        <Text style={{ color: theme.colors.onPrimary, marginLeft: 10 }} variant={'titleLarge'} >
+        <Icon
+          size={25}
+          source={'account-heart'}
+          color={theme.colors.onPrimary}
+        />
+        <Text
+          style={{ color: theme.colors.onPrimary, marginLeft: 10 }}
+          variant={'titleLarge'}
+        >
           Rate Friends For Role
         </Text>
       </View>

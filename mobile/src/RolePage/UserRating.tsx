@@ -1,10 +1,10 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { View } from 'react-native'
 import { Text } from 'react-native-paper'
 import useStore from '../Store/useStore'
-import { AirbnbRating } from 'react-native-ratings'
 import { ThemeContext } from '../Theme/Theme'
 import { rate } from '../Actions/actions'
+import StarRating from 'react-native-star-rating-widget'
 
 const UserRating = ({ roleId, userId }: PropsType): React.JSX.Element => {
   const { theme } = useContext(ThemeContext)
@@ -19,12 +19,18 @@ const UserRating = ({ roleId, userId }: PropsType): React.JSX.Element => {
         rating.roleId === roleId
     )
   )
+  const [ratingValue, setRatingValue] = useState(3)
+  useEffect(() => {
+    if (rating == null) return
+    setRatingValue(rating.value)
+  }, [rating])
   return (
     <View
       style={{
         alignItems: 'center',
         backgroundColor: theme.colors.elevation.level1,
-        borderRadius: 20
+        borderRadius: 20,
+        marginTop: 15
       }}
     >
       <Text
@@ -39,15 +45,16 @@ const UserRating = ({ roleId, userId }: PropsType): React.JSX.Element => {
       >
         {user?.username}
       </Text>
-      <AirbnbRating
-        starContainerStyle={{ marginBottom: 15 }}
-        count={5}
-        onFinishRating={(value) => {
+      <StarRating
+        rating={ratingValue}
+        onChange={(value) => {
+          setRatingValue(value)
           rate({ userId, roleId, value })
         }}
-        size={20}
-        showRating={false}
-        defaultRating={rating?.value}
+        enableHalfStar={false}
+        style={{ marginBottom: 15 }}
+        enableSwiping={false}
+        color={theme.colors.primary}
       />
     </View>
   )
