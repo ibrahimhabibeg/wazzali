@@ -14,10 +14,10 @@ const joinTeam =
     if (!team) return;
     const user = {...generateUser(team), isLeader: false};
     const newTeam = {...team, users: [...team.users, user]};
-    socket.data = {teamCode: team.code, username: user.username};
+    socket.data = {teamCode: team.code, id: user.id};
     socket.join(team.code);
     io.to(team.code).emit('data', newTeam);
-    socket.emit('me', user);
+    socket.emit('id', user.id);
     storeTeam(newTeam);
   };
 

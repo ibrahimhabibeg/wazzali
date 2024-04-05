@@ -15,10 +15,10 @@ const createTeam =
     const teamCode = await generateNewTeamCode();
     const user = {...generateUser({users: []}), isLeader: true};
     const team: Team = {code: teamCode, users: [user], roles: []};
-    socket.data = {teamCode: teamCode, username: user.username};
+    socket.data = {teamCode: teamCode, id: user.id};
     socket.join(teamCode);
     io.to(teamCode).emit('data', team);
-    socket.emit('me', user);
+    socket.emit('id', user.id);
     storeTeam(team);
   };
 

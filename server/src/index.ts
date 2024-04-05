@@ -30,6 +30,7 @@ io.on('connection', socket => {
 io.listen(Number(process.env.PORT));
 
 export type User = {
+  id: string;
   username: string;
   description: string;
   isLeader: boolean;

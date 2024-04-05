@@ -1,6 +1,6 @@
-import {updateTeamAndMe} from './utils';
+import {updateTeam} from './utils';
 
-const editMyData = updateTeamAndMe<{
+const editMyData = updateTeam<{
   username: string;
   description: string;
 }>((team, me, {username: newUsername, description: newDescription}) => {
@@ -10,14 +10,8 @@ const editMyData = updateTeamAndMe<{
     description: newDescription,
   };
   return {
-    team: {
-      ...team,
-      users: [
-        ...team.users.filter(user => user.username !== me.username),
-        newMe,
-      ],
-    },
-    me: newMe,
+    ...team,
+    users: [...team.users.filter(user => user.id !== me.id), newMe],
   };
 });
 

@@ -1,4 +1,5 @@
 import {Color} from './index';
+import {v4 as uuidv4} from 'uuid';
 
 const adjectives = [
   'Caffeinated',
@@ -64,6 +65,7 @@ const generateDescription = () =>
 const generateColor = () => colors[Math.floor(Math.random() * colors.length)];
 
 const generateUser = (team: Team) => ({
+  id: uuidv4(),
   username: generateUsername(team),
   description: generateDescription(),
   color: generateColor(),

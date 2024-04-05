@@ -2,7 +2,7 @@ import type { JSX } from 'react'
 import { createContext, useEffect } from 'react'
 import { io } from 'socket.io-client'
 import socket from './socket'
-import { type Team, type User } from '../types'
+import { type Team } from '../types'
 import useStore from '../Store/useStore'
 
 export const SocketContext = createContext({
@@ -15,24 +15,24 @@ export const SocketListener = ({
   children: JSX.Element
 }): React.JSX.Element => {
   const setTeam = useStore((state) => state.setTeam)
-  const setMe = useStore((state) => state.setMe)
+  const setId = useStore((state) => state.setId)
 
   useEffect(() => {
+    socket.on('id', (id: string) => {
+      setId(id ?? '')
+    })
     socket.on('data', (team: Team) => {
       setTeam(team)
-    })
-    socket.on('me', (me: User) => {
-      setMe(me)
     })
     return () => {
       socket.off('data', (team: Team) => {
         setTeam(team)
       })
-      socket.off('me', (me: User) => {
-        setMe(me)
+      socket.off('id', (id: string) => {
+        setId(id ?? '')
       })
     }
-  }, [setMe, setTeam])
+  }, [setId, setTeam])
 
   return children
 }
