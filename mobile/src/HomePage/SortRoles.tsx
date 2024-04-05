@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { View } from 'react-native'
-import { List, Text } from 'react-native-paper'
+import { Icon, List, Text } from 'react-native-paper'
 import { ThemeContext } from '../Theme/Theme'
 import DraggableFlatList, {
   type RenderItemParams,
@@ -55,12 +55,12 @@ const SortRoles = (): React.JSX.Element => {
             flexDirection: 'row',
             alignItems: 'center',
             paddingVertical: 5,
-            paddingHorizontal: 10,
-            justifyContent: 'space-between'
+            paddingHorizontal: 10
           }}
         >
+          <Icon size={25} source={'heart'} color={theme.colors.onPrimary} />
           <Text
-            style={{ color: theme.colors.onPrimary }}
+            style={{ color: theme.colors.onPrimary, marginLeft: 5 }}
             variant={'titleLarge'}
           >
             My Roles Preference

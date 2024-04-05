@@ -27,9 +27,16 @@ const RolesList = (): React.JSX.Element => {
           justifyContent: 'space-between'
         }}
       >
-        <Text style={{ color: theme.colors.onPrimary }} variant={'titleLarge'}>
-          Roles ({roles?.length})
-        </Text>
+        <View style={{ flexDirection: 'row' }}>
+          <Icon size={25} source={'hard-hat'} color={theme.colors.onPrimary} />
+          <Text
+            style={{ color: theme.colors.onPrimary, marginLeft: 5 }}
+            variant={'titleLarge'}
+          >
+            Roles ({roles?.length})
+          </Text>
+        </View>
+
         {(me?.isLeader ?? false) && (
           <Pressable
             onPress={() => {

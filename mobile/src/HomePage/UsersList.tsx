@@ -1,5 +1,5 @@
 import { FlatList, Pressable, View } from 'react-native'
-import { Card, Text } from 'react-native-paper'
+import { Card, Icon, Text } from 'react-native-paper'
 import React, { useContext } from 'react'
 import { ThemeContext } from '../Theme/Theme'
 import useStore from '../Store/useStore'
@@ -24,7 +24,12 @@ const UsersList = (): React.JSX.Element => {
           paddingHorizontal: 10
         }}
       >
-        <Text style={{ color: theme.colors.onPrimary }} variant={'titleLarge'}>
+        <Icon
+          size={25}
+          source={'account-group'}
+          color={theme.colors.onPrimary}
+        />
+        <Text style={{ color: theme.colors.onPrimary, marginLeft: 5 }} variant={'titleLarge'}>
           Buddies ({users?.length})
         </Text>
       </View>
