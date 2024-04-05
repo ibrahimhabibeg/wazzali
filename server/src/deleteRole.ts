@@ -9,6 +9,7 @@ const deleteRole = updateTeam<string>((team, me, id) => {
       ...user,
       rolesPreference: user.rolesPreference.filter(val => val !== id),
     })),
+    ratings: team.ratings.filter(rating => rating.roleId !== id),
   };
 });
 

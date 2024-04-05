@@ -9,6 +9,7 @@ import addRole from './addRole';
 import editRole from './editRole';
 import deleteRole from './deleteRole';
 import updateRolesPreference from './updateRolesPreference';
+import rate from './rate';
 
 const pubClient = new Redis({
   host: process.env.REDIS_HOST,
@@ -27,6 +28,7 @@ io.on('connection', socket => {
   socket.on('editRole', editRole(io, socket));
   socket.on('deleteRole', deleteRole(io, socket));
   socket.on('updateRolesPreference', updateRolesPreference(io, socket));
+  socket.on('rate', rate(io, socket));
 });
 
 io.listen(Number(process.env.PORT));
@@ -44,9 +46,16 @@ export type Role = {
   title: string;
   description: string;
 };
+export type Rating = {
+  roleId: string;
+  from: string;
+  to: string;
+  value: number;
+};
 export type Team = {
   code: string;
   users: Array<User>;
   roles: Array<Role>;
+  ratings: Array<Rating>;
 };
 export type Color = 'blue' | 'red' | 'yellow' | 'green';

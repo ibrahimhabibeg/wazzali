@@ -18,7 +18,12 @@ const createTeam =
       isLeader: true,
       rolesPreference: [],
     };
-    const team: Team = {code: teamCode, users: [user], roles: []};
+    const team: Team = {
+      code: teamCode,
+      users: [user],
+      roles: [],
+      ratings: [],
+    };
     socket.data = {teamCode: teamCode, id: user.id};
     socket.join(teamCode);
     io.to(teamCode).emit('data', team);
