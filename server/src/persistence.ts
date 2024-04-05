@@ -1,4 +1,4 @@
-import {Team} from './index';
+import {Team} from './types';
 import {createClient} from 'redis';
 
 const client = createClient({

@@ -1,4 +1,4 @@
-import {Color} from './index';
+import {Color} from './types';
 import {v4 as uuidv4} from 'uuid';
 
 const adjectives = [

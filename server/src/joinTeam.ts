@@ -2,7 +2,7 @@ import {Server, Socket} from 'socket.io';
 import generateUser from './user';
 import {getTeam, storeTeam} from './persistence';
 import {DefaultEventsMap} from 'socket.io/dist/typed-events';
-import {Team, User} from '.';
+import {Team, User} from './types';
 
 const joinTeam =
   (

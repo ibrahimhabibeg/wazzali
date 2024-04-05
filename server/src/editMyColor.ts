@@ -1,4 +1,4 @@
-import {Color} from './index';
+import {Color} from './types';
 import {updateTeam} from './utils';
 
 const editMyColor = updateTeam<Color>((team, me, color) => {

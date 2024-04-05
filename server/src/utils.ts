@@ -1,5 +1,5 @@
 import {Server, Socket} from 'socket.io';
-import {Team, User} from '.';
+import {Team, User} from './types';
 import {DefaultEventsMap} from 'socket.io/dist/typed-events';
 import {getTeam, storeTeam} from './persistence';
 

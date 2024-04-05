@@ -2,7 +2,7 @@ import {Server, Socket} from 'socket.io';
 import generateNewTeamCode from './team';
 import generateUser from './user';
 import {storeTeam} from './persistence';
-import {Team, User} from './index';
+import {Team, User} from './types';
 import {DefaultEventsMap} from 'socket.io/dist/typed-events';
 
 const createTeam =
