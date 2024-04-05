@@ -6,12 +6,14 @@ import JoinTeam from '../JoinPage/JoinTeam'
 import useStore from '../Store/useStore'
 import Home from '../HomePage/Home'
 import Role from '../RolePage/Role'
+import UserPage from '../UserPage/UserPage'
 
 // eslint-disable-next-line @typescript-eslint/consistent-type-definitions
 export type NavigationParamList = {
   home: undefined
   join: undefined
   role: { id: string }
+  user: { id: string }
 }
 
 const Stack = createNativeStackNavigator<NavigationParamList>()
@@ -27,6 +29,7 @@ const Navigator = (): React.JSX.Element => {
           <>
             <Stack.Screen name="home" component={Home} />
             <Stack.Screen name="role" component={Role} />
+            <Stack.Screen name="user" component={UserPage} />
           </>
             )
           : (
