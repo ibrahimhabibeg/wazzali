@@ -8,6 +8,7 @@ import {createAdapter} from '@socket.io/redis-adapter';
 import addRole from './addRole';
 import editRole from './editRole';
 import deleteRole from './deleteRole';
+import updateRolesPreference from './updateRolesPreference';
 
 const pubClient = new Redis({
   host: process.env.REDIS_HOST,
@@ -25,6 +26,7 @@ io.on('connection', socket => {
   socket.on('addRole', addRole(io, socket));
   socket.on('editRole', editRole(io, socket));
   socket.on('deleteRole', deleteRole(io, socket));
+  socket.on('updateRolesPreference', updateRolesPreference(io, socket));
 });
 
 io.listen(Number(process.env.PORT));
@@ -35,6 +37,7 @@ export type User = {
   description: string;
   isLeader: boolean;
   color: Color;
+  rolesPreference: Array<string>;
 };
 export type Role = {
   id: string;

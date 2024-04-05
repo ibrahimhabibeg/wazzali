@@ -5,7 +5,15 @@ const addRole = updateTeam<{title: string; description: string}>(
   (team, user, role) => {
     if (!user?.isLeader) return;
     if (team.roles.some(val => val.title === role.title)) return;
-    return {...team, roles: [...team.roles, {...role, id: uuidv4()}]};
+    const newRole = {...role, id: uuidv4()};
+    return {
+      ...team,
+      roles: [...team.roles, newRole],
+      users: team.users.map(user => ({
+        ...user,
+        rolesPreference: [...user.rolesPreference, newRole.id],
+      })),
+    };
   }
 );
 

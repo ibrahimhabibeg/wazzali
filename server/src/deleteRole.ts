@@ -5,6 +5,10 @@ const deleteRole = updateTeam<string>((team, me, id) => {
   return {
     ...team,
     roles: team.roles.filter(role => role.id !== id),
+    users: team.users.map(user => ({
+      ...user,
+      rolesPreference: user.rolesPreference.filter(val => val !== id),
+    })),
   };
 });
 

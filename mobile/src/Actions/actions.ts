@@ -34,3 +34,7 @@ export const editRole = (data: {
 export const deleteRole = (id: string): void => {
   socket.emit('deleteRole', id)
 }
+
+export const updateRolesPreference = (ids: string[]): void => {
+  socket.emit('updateRolesPreference', ids)
+}

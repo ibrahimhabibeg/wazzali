@@ -4,6 +4,7 @@ export interface User {
   description: string
   isLeader: boolean
   color: Color
+  rolesPreference: string[]
 }
 export interface Role {
   id: string

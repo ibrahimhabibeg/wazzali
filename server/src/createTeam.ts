@@ -2,7 +2,7 @@ import {Server, Socket} from 'socket.io';
 import generateNewTeamCode from './team';
 import generateUser from './user';
 import {storeTeam} from './persistence';
-import {Team} from './index';
+import {Team, User} from './index';
 import {DefaultEventsMap} from 'socket.io/dist/typed-events';
 
 const createTeam =
@@ -13,7 +13,11 @@ const createTeam =
   async () => {
     if (typeof socket.data?.teamCode === 'string') return;
     const teamCode = await generateNewTeamCode();
-    const user = {...generateUser({users: []}), isLeader: true};
+    const user: User = {
+      ...generateUser({users: []}),
+      isLeader: true,
+      rolesPreference: [],
+    };
     const team: Team = {code: teamCode, users: [user], roles: []};
     socket.data = {teamCode: teamCode, id: user.id};
     socket.join(teamCode);
