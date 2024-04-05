@@ -7,6 +7,7 @@ import { type NavigationParamList } from '../Navigation/Navigator'
 import { Pressable } from 'react-native'
 import EditRoleModal from './EditRoleModal'
 import DeleteRoleButton from './DeleteRoleButton'
+import UsersRating from './UsersRating'
 
 const Role = ({
   route: {
@@ -51,6 +52,7 @@ const Role = ({
         }}
         id={id}
       />
+      <UsersRating roleId={id} />
       {isLeader === true && <DeleteRoleButton id={id} />}
     </SafeAreaView>
   )

@@ -38,3 +38,11 @@ export const deleteRole = (id: string): void => {
 export const updateRolesPreference = (ids: string[]): void => {
   socket.emit('updateRolesPreference', ids)
 }
+
+export const rate = (data: {
+  userId: string
+  roleId: string
+  value: number
+}): void => {
+  socket.emit('rate', data)
+}

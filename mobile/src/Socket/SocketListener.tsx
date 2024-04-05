@@ -22,6 +22,7 @@ export const SocketListener = ({
       setId(id ?? '')
     })
     socket.on('data', (team: Team) => {
+      console.log(team)
       setTeam(team)
     })
     return () => {
