@@ -9,6 +9,7 @@ import EditRoleModal from './EditRoleModal'
 import DeleteRoleButton from './DeleteRoleButton'
 import UsersRating from './UsersRating'
 import RoleIcon from '../Components/RoleIcon'
+import SetRoleIconModal from './SetRoleIconModal'
 
 const Role = ({
   route: {
@@ -20,6 +21,7 @@ const Role = ({
   )
   const isLeader = useStore((state) => state.me?.isLeader)
   const [isEditingData, setIsEditingData] = useState(false)
+  const [isEditingIcon, setIsEditingIcon] = useState(false)
 
   return (
     <SafeAreaView
@@ -35,11 +37,17 @@ const Role = ({
           <Icon size={22} source={'square-edit-outline'} />
         </Pressable>
       )}
-      <RoleIcon
-        icon={role?.icon ?? 'tea'}
-        size={80}
-        style={{ marginTop: 10 }}
-      />
+      <Pressable
+        onPress={() => {
+          setIsEditingIcon(true)
+        }}
+      >
+        <RoleIcon
+          icon={role?.icon ?? 'tea'}
+          size={80}
+          style={{ marginTop: 10 }}
+        />
+      </Pressable>
       <Text
         variant="headlineMedium"
         style={{ marginTop: 20, textAlign: 'center' }}
@@ -58,6 +66,11 @@ const Role = ({
       />
       <UsersRating roleId={id} />
       {isLeader === true && <DeleteRoleButton id={id} />}
+      <SetRoleIconModal
+        visible={isEditingIcon}
+        hide={() => { setIsEditingIcon(false) }}
+        id={id}
+      />
     </SafeAreaView>
   )
 }

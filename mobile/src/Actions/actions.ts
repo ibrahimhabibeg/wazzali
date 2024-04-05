@@ -1,5 +1,5 @@
 import socket from '../Socket/socket'
-import { type Color, type Role } from '../types'
+import { type RoleIcon, type Color, type Role } from '../types'
 
 export const joinTeam = (code: string): void => {
   socket.emit('joinTeam', code)
@@ -45,4 +45,8 @@ export const rate = (data: {
   value: number
 }): void => {
   socket.emit('rate', data)
+}
+
+export const setRoleIcon = (data: { roleId: string, icon: RoleIcon }): void => {
+  socket.emit('setRoleIcon', data)
 }
