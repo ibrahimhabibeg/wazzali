@@ -1,11 +1,11 @@
-import {v4 as uuidv4} from 'uuid';
 import {updateTeam} from './utils';
+import createRole from './role';
 
 const addRole = updateTeam<{title: string; description: string}>(
   (team, user, role) => {
     if (!user?.isLeader) return;
     if (team.roles.some(val => val.title === role.title)) return;
-    const newRole = {...role, id: uuidv4()};
+    const newRole = createRole(role);
     return {
       ...team,
       roles: [...team.roles, newRole],

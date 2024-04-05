@@ -1,11 +1,12 @@
 import { FlatList, Pressable, View } from 'react-native'
-import { Avatar, Card, Icon, Text } from 'react-native-paper'
+import { Card, Icon, Text } from 'react-native-paper'
 import React, { useContext, useState } from 'react'
 import { ThemeContext } from '../Theme/Theme'
 import useStore from '../Store/useStore'
 import AddRoleModal from './AddRoleModal'
 import { type NavigationProp, useNavigation } from '@react-navigation/native'
 import { type NavigationParamList } from '../Navigation/Navigator'
+import RoleIcon from '../Components/RoleIcon'
 
 const RolesList = (): React.JSX.Element => {
   const { theme } = useContext(ThemeContext)
@@ -70,7 +71,7 @@ const RolesList = (): React.JSX.Element => {
                     alignItems: 'center'
                   }}
                 >
-                  <Avatar.Icon size={30} icon={'book'} />
+                  <RoleIcon size={30} icon={item.item.icon} />
                   <Text
                     variant={'titleMedium'}
                     style={{ marginLeft: 10 }}
