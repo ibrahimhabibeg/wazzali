@@ -23,6 +23,7 @@ const createTeam =
       users: [user],
       roles: [],
       ratings: [],
+      distribution: null,
     };
     socket.data = {teamCode: teamCode, id: user.id};
     socket.join(teamCode);
