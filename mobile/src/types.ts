@@ -23,6 +23,7 @@ export interface Team {
   users: User[]
   roles: Role[]
   ratings: Rating[]
+  distribution: Array<{ roleId: string, userId: string }> | null
 }
 export type Color = 'blue' | 'red' | 'yellow' | 'green'
 export type RoleIcon =

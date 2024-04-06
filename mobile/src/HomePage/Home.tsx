@@ -8,6 +8,8 @@ import { ScrollView } from 'react-native'
 import SortRoles from './SortRoles'
 import { GestureHandlerRootView } from 'react-native-gesture-handler'
 
+import AssignRolesButton from './AssignRolesButton'
+
 const Home = (): React.JSX.Element => {
   return (
     <GestureHandlerRootView>
@@ -19,6 +21,7 @@ const Home = (): React.JSX.Element => {
           <UsersList />
           <RolesList />
           <SortRoles />
+          <AssignRolesButton />
           <ShareTeam />
         </ScrollView>
       </SafeAreaView>
