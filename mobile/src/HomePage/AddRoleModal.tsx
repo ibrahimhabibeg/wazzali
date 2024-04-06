@@ -23,9 +23,7 @@ const AddRoleModal = ({ visible, hide }: propsType): React.JSX.Element => {
     setTitle(newTitle)
     setTitleError('')
     if (newTitle === '') setTitleError("Title can't be empty.")
-    if (
-      (roles?.some((role) => role.title === newTitle) ?? false)
-    ) {
+    if (roles?.some((role) => role.title === newTitle) ?? false) {
       setTitleError('Title already taken.')
     }
   }
@@ -93,6 +91,8 @@ const AddRoleModal = ({ visible, hide }: propsType): React.JSX.Element => {
               disabled={Boolean(titleError) || Boolean(descriptionError)}
               onPress={() => {
                 addRole({ title, description })
+                setTitle('')
+                setDescription('')
                 hide()
               }}
             >
