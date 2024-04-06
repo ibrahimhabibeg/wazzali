@@ -1,21 +1,16 @@
 import {updateTeam} from './utils';
 
 const rate = updateTeam<{userId: string; roleId: string; value: number}>(
-  (team, user, {userId, roleId, value}) => {
-    console.log({userId, roleId, value});
+  (team, me, {userId, roleId, value}) => {
     return {
       ...team,
-      ratings: [
-        ...team.ratings.filter(
-          rating => rating.to !== userId || rating.from !== user.id
-        ),
-        {
-          from: user.id,
-          to: userId,
-          roleId,
-          value,
-        },
-      ],
+      ratings: team.ratings.map(rating =>
+        rating.roleId === roleId &&
+        rating.from === me.id &&
+        rating.to === userId
+          ? {...rating, value}
+          : rating
+      ),
     };
   }
 );

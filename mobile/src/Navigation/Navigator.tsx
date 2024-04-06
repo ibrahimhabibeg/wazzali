@@ -7,11 +7,13 @@ import useStore from '../Store/useStore'
 import Home from '../HomePage/Home'
 import Role from '../RolePage/Role'
 import UserPage from '../UserPage/UserPage'
+import DistributionPage from '../DistributionPage/DistributionPage'
 
 // eslint-disable-next-line @typescript-eslint/consistent-type-definitions
 export type NavigationParamList = {
   home: undefined
   join: undefined
+  distribution: undefined
   role: { id: string }
   user: { id: string }
 }
@@ -26,11 +28,17 @@ const Navigator = (): React.JSX.Element => {
       <Stack.Navigator screenOptions={{ headerShown: false }}>
         {team != null
           ? (
-          <>
-            <Stack.Screen name="home" component={Home} />
-            <Stack.Screen name="role" component={Role} />
-            <Stack.Screen name="user" component={UserPage} />
-          </>
+              team.distribution != null
+                ? (
+            <Stack.Screen name="distribution" component={DistributionPage} />
+                  )
+                : (
+            <>
+              <Stack.Screen name="home" component={Home} />
+              <Stack.Screen name="role" component={Role} />
+              <Stack.Screen name="user" component={UserPage} />
+            </>
+                  )
             )
           : (
           <>

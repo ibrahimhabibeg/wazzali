@@ -6,6 +6,7 @@ import { type NativeStackScreenProps } from '@react-navigation/native-stack'
 import { type NavigationParamList } from '../Navigation/Navigator'
 import RolesRating from './RolesRating'
 import UserIcon from '../Components/UserIcon'
+import { ScrollView } from 'react-native'
 
 const UserPage = ({
   route: {
@@ -17,20 +18,25 @@ const UserPage = ({
   )
 
   return (
-    <SafeAreaView
-      style={{ alignItems: 'center', width: '85%', alignSelf: 'center' }}
-    >
-      <UserIcon color={user?.color ?? 'blue'} style={{ marginTop: 20 }} />
-      <Text
-        variant="headlineMedium"
-        style={{ marginTop: 20, textAlign: 'center' }}
+    <SafeAreaView>
+      <ScrollView
+        contentContainerStyle={{ alignItems: 'center', width: '85%', alignSelf: 'center' }}
       >
-        {user?.username}
-      </Text>
-      <Text variant="bodyLarge" style={{ marginTop: 15, textAlign: 'center' }}>
-        {user?.description}
-      </Text>
-      <RolesRating userId={id} />
+        <UserIcon color={user?.color ?? 'blue'} style={{ marginTop: 20 }} />
+        <Text
+          variant="headlineMedium"
+          style={{ marginTop: 20, textAlign: 'center' }}
+        >
+          {user?.username}
+        </Text>
+        <Text
+          variant="bodyLarge"
+          style={{ marginTop: 15, textAlign: 'center' }}
+        >
+          {user?.description}
+        </Text>
+        <RolesRating userId={id} />
+      </ScrollView>
     </SafeAreaView>
   )
 }

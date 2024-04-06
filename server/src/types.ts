@@ -23,6 +23,7 @@ export type Team = {
   users: Array<User>;
   roles: Array<Role>;
   ratings: Array<Rating>;
+  distribution: Array<{roleId: string; userId: string}> | null;
 };
 export type Color = 'blue' | 'red' | 'yellow' | 'green';
 export type RoleIcon =
