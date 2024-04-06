@@ -13,6 +13,7 @@ import rate from './rate';
 import setRoleIcon from './setRoleIcon';
 import distributeRoles from './distributeRoles';
 import resetDistribution from './resetDistribution';
+import disonnect from './disconnect';
 
 const pubClient = new Redis({
   host: process.env.REDIS_HOST,
@@ -35,6 +36,7 @@ io.on('connection', socket => {
   socket.on('setRoleIcon', setRoleIcon(io, socket));
   socket.on('distributeRoles', distributeRoles(io, socket));
   socket.on('resetDistribution', resetDistribution(io, socket));
+  socket.on('disconnect', disonnect(io, socket));
 });
 
 io.listen(Number(process.env.PORT));

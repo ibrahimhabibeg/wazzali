@@ -21,3 +21,7 @@ export const getTeam = async (code: string) => {
   const team: Team = JSON.parse(String(teamString));
   return team;
 };
+
+export const deleteTeam = async (code: string) => {
+  await client.del(`team:${code}`);
+};
