@@ -4,7 +4,7 @@ import { Icon, Text } from 'react-native-paper'
 import React, { useState } from 'react'
 import { type NativeStackScreenProps } from '@react-navigation/native-stack'
 import { type NavigationParamList } from '../Navigation/Navigator'
-import { Pressable } from 'react-native'
+import { Pressable, ScrollView } from 'react-native'
 import EditRoleModal from './EditRoleModal'
 import DeleteRoleButton from './DeleteRoleButton'
 import UsersRating from './UsersRating'
@@ -24,53 +24,64 @@ const Role = ({
   const [isEditingIcon, setIsEditingIcon] = useState(false)
 
   return (
-    <SafeAreaView
-      style={{ alignItems: 'center', width: '85%', alignSelf: 'center' }}
-    >
-      {isLeader === true && (
+    <SafeAreaView>
+      <ScrollView
+        contentContainerStyle={{
+          alignItems: 'center',
+          width: '85%',
+          alignSelf: 'center'
+        }}
+      >
+        {isLeader === true && (
+          <Pressable
+            style={{ alignSelf: 'flex-end', marginTop: 20 }}
+            onPress={() => {
+              setIsEditingData((val) => !val)
+            }}
+          >
+            <Icon size={22} source={'square-edit-outline'} />
+          </Pressable>
+        )}
         <Pressable
-          style={{ alignSelf: 'flex-end', marginTop: 20 }}
           onPress={() => {
-            setIsEditingData((val) => !val)
+            setIsEditingIcon(true)
           }}
         >
-          <Icon size={22} source={'square-edit-outline'} />
+          <RoleIcon
+            icon={role?.icon ?? 'tea'}
+            size={80}
+            style={{ marginTop: 10 }}
+          />
         </Pressable>
-      )}
-      <Pressable
-        onPress={() => {
-          setIsEditingIcon(true)
-        }}
-      >
-        <RoleIcon
-          icon={role?.icon ?? 'tea'}
-          size={80}
-          style={{ marginTop: 10 }}
+        <Text
+          variant="headlineMedium"
+          style={{ marginTop: 20, textAlign: 'center' }}
+        >
+          {role?.title}
+        </Text>
+        <Text
+          variant="bodyLarge"
+          style={{ marginTop: 15, textAlign: 'center' }}
+        >
+          {role?.description}
+        </Text>
+        <EditRoleModal
+          visible={isEditingData}
+          hide={() => {
+            setIsEditingData(false)
+          }}
+          id={id}
         />
-      </Pressable>
-      <Text
-        variant="headlineMedium"
-        style={{ marginTop: 20, textAlign: 'center' }}
-      >
-        {role?.title}
-      </Text>
-      <Text variant="bodyLarge" style={{ marginTop: 15, textAlign: 'center' }}>
-        {role?.description}
-      </Text>
-      <EditRoleModal
-        visible={isEditingData}
-        hide={() => {
-          setIsEditingData(false)
-        }}
-        id={id}
-      />
-      <UsersRating roleId={id} />
-      {isLeader === true && <DeleteRoleButton id={id} />}
-      <SetRoleIconModal
-        visible={isEditingIcon}
-        hide={() => { setIsEditingIcon(false) }}
-        id={id}
-      />
+        <UsersRating roleId={id} />
+        {isLeader === true && <DeleteRoleButton id={id} />}
+        <SetRoleIconModal
+          visible={isEditingIcon}
+          hide={() => {
+            setIsEditingIcon(false)
+          }}
+          id={id}
+        />
+      </ScrollView>
     </SafeAreaView>
   )
 }
