@@ -18,8 +18,8 @@ const JoinTeam = (): React.JSX.Element => {
         }}
       >
         <Image
-          source={require('../../assets/logo.png')}
-          style={{ flex: 1, width: 120, height: 120, marginTop: 50 }}
+          source={require('../../assets/icon.png')}
+          style={{ flex: 1, width: 120, height: 120, marginTop: 50, borderRadius: 60 }}
         />
         <Text variant={'headlineLarge'} style={{ marginTop: 20 }}>
           Wazzali
