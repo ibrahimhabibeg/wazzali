@@ -1,5 +1,6 @@
 services:
   - type: web
+    plan: free
     runtime: docker
     name: wazzali-server
     repo: https://github.com/ibrahimhabibeg/wazzali
