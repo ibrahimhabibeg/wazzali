@@ -1,5 +1,5 @@
 {
-  "name": "mobile",
+  "name": "wazzali-mobile",
   "version": "1.0.0",
   "main": "node_modules/expo/AppEntry.js",
   "scripts": {
@@ -25,7 +25,8 @@
     "react-native-safe-area-view": "github:react-native-community/react-native-safe-area-view",
     "react-native-star-rating-widget": "^1.7.3",
     "socket.io-client": "^4.7.5",
-    "zustand": "^4.5.2"
+    "zustand": "^4.5.2",
+    "react-native-screens": "~3.29.0"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0",
