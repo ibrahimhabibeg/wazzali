@@ -1,0 +1,28 @@
+services:
+  - type: web
+    runtime: docker
+    name: wazzali-server
+    repo: https://github.com/ibrahimhabibeg/wazzali
+    rootDir: server
+    region: frankfurt
+    branch: main
+    envVars:
+      - key: REDIS_HOST
+        fromService:
+          type: redis
+          name: wazzali-redis
+          property: host
+      - key: REDIS_PORT
+        fromService:
+          type: redis
+          name: wazzali-redis
+          property: port
+      - key: PORT
+        value: 8080
+  - type: redis
+    region: frankfurt
+    name: wazzali-redis
+    ipAllowList: []
+    plan: free
+    maxmemoryPolicy: noeviction
+
