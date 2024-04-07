@@ -30,7 +30,7 @@ const UsersList = (): React.JSX.Element => {
           color={theme.colors.onPrimary}
         />
         <Text style={{ color: theme.colors.onPrimary, marginLeft: 5 }} variant={'titleLarge'}>
-          Buddies ({users?.length})
+          Teammates ({users?.length})
         </Text>
       </View>
       <FlatList
