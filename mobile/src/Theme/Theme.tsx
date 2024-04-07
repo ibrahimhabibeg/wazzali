@@ -13,6 +13,7 @@ import { setItemAsync, getItemAsync } from 'expo-secure-store'
 import { IS_DARK_KEY } from '../config/secureStore'
 import useStore from '../Store/useStore'
 import themeColorsMap from './themeColorsMap'
+import { StatusBar } from 'expo-status-bar'
 
 const { LightTheme: AdaptedLightTheme, DarkTheme: AdaptedDarkTheme } =
   adaptNavigationTheme({
@@ -88,6 +89,7 @@ export const ThemeProvider = ({
       }}
     >
       <PaperProvider theme={isDark ? DarkTheme : LightTheme}>
+        <StatusBar style={isDark ? 'light' : 'dark'} />
         {children}
       </PaperProvider>
     </ThemeContext.Provider>
