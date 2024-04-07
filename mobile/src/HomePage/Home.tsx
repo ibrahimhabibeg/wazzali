@@ -9,8 +9,10 @@ import SortRoles from './SortRoles'
 import { GestureHandlerRootView } from 'react-native-gesture-handler'
 
 import AssignRolesButton from './AssignRolesButton'
+import useStore from '../Store/useStore'
 
 const Home = (): React.JSX.Element => {
+  const rolesCount = useStore((state) => state.team?.roles.length)
   return (
     <GestureHandlerRootView>
       <SafeAreaView>
@@ -20,8 +22,12 @@ const Home = (): React.JSX.Element => {
           <Me />
           <UsersList />
           <RolesList />
-          <SortRoles />
-          <AssignRolesButton />
+          {(rolesCount != null) && rolesCount > 0 && (
+            <>
+              <SortRoles />
+              <AssignRolesButton />
+            </>
+          )}
           <ShareTeam />
         </ScrollView>
       </SafeAreaView>
