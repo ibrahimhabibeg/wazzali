@@ -1,0 +1,31 @@
+{
+  "cli": {
+    "version": ">= 7.7.0"
+  },
+  "build": {
+    "development": {
+      "developmentClient": true,
+      "distribution": "internal",
+      "env": {
+        "EXPO_PUBLIC_BACKEND_WEBSOCKET_URL": "wss://wazzali-server.onrender.com"
+      }
+    },
+    "preview": {
+      "distribution": "internal",
+      "android": {
+        "buildType": "apk"
+      },
+      "env": {
+        "EXPO_PUBLIC_BACKEND_WEBSOCKET_URL": "wss://wazzali-server.onrender.com"
+      }
+    },
+    "production": {
+      "env": {
+        "EXPO_PUBLIC_BACKEND_WEBSOCKET_URL": "wss://wazzali-server.onrender.com"
+      }
+    }
+  },
+  "submit": {
+    "production": {}
+  }
+}

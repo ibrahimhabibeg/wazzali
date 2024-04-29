@@ -1,0 +1,35 @@
+{
+  "expo": {
+    "name": "Wazzali",
+    "slug": "Wazzali",
+    "version": "1.0.2",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "dark",
+    "splash": {
+      "image": "./assets/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#1a1d1e"
+    },
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "ios": {
+      "supportsTablet": true
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/adaptive-icon.png",
+        "backgroundColor": "#1D2F7A"
+      },
+      "icon": "./assets/icon.png",
+      "package": "com.ibrahimhabibeg.Wazzali",
+      "versionCode": 3
+    },
+    "extra": {
+      "eas": {
+        "projectId": "3e700768-9e87-41a5-8dd7-eddaab87561d"
+      }
+    }
+  }
+}
