@@ -26,6 +26,13 @@ COPY . .
 
 RUN pnpm run build
 
+FROM base as dev
+COPY ./package.json .
+RUN pnpm i --ignore-scripts
+COPY . .
+EXPOSE 3000
+CMD pnpm dev
+
 FROM base as final
 ENV NODE_ENV production
 USER node
@@ -34,10 +41,3 @@ COPY --from=deps /usr/src/app/node_modules ./node_modules
 COPY --from=build /usr/src/app/build ./build
 EXPOSE 3000
 CMD pnpm start
-
-FROM base as dev
-COPY ./package.json .
-RUN pnpm i --ignore-scripts
-COPY . .
-EXPOSE 3000
-CMD pnpm dev
