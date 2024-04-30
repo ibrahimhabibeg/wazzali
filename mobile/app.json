@@ -2,7 +2,7 @@
   "expo": {
     "name": "Wazzali",
     "slug": "Wazzali",
-    "version": "1.0.2",
+    "version": "1.0.3",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "dark",
@@ -24,7 +24,7 @@
       },
       "icon": "./assets/icon.png",
       "package": "com.ibrahimhabibeg.Wazzali",
-      "versionCode": 3
+      "versionCode": 4
     },
     "extra": {
       "eas": {
